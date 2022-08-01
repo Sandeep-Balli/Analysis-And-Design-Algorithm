@@ -10,7 +10,7 @@ void insertionSort(int a[], int n) {
 			j = j-1;
 		}
 		a[j+1] = temp;
-	}
+	}   
 }
 
 int main() {

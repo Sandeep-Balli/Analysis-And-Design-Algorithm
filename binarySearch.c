@@ -1,20 +1,55 @@
 #include<stdio.h>
+#include <stdbool.h>
+
+//				ERROR IN CODE
+
+//int binarySearch(int a[], int value) {
+//	int n = sizeof(a)/sizeof(a[0]);
+//	int low = 0;
+//	int high = n-1;
+//	while(low <= high) {
+//		int mid = (low + high) / 2;
+//		if(a[mid] == value) {
+//			return mid;
+//		}
+//		else if(a[mid] > value) {
+//			high = mid - 1;
+//		} 
+//		else if(a[mid] < value) {
+//			low = mid+1;
+//		}
+//	}
+//	return -1;
+//}
 
 int binarySearch(int a[], int value) {
-	int n = sizeof(a);
+	int n = sizeof(a)/sizeof(a[0]);
 	int low = 0;
-	int high = n-1;
+	int high = n;
+	int mid = -1;
 	while(low <= high) {
 		int mid = (low + high) / 2;
-		if(a[mid] > value) {
-			high = mid - 1;
-		} else if(a[mid] < value) {
-			low = mid+1;
-		} else {
+		if(a[mid] == value) {
 			return mid;
 		}
+		else if(a[mid] > value) {
+			high = mid - 1;
+		}
+		else if(a[mid] < value) {
+			low = mid + 1;
+		}
 	}
-	return 0;
+	return mid;
+}
+
+bool isSorted(int a[]) {
+	int i, n = sizeof(a)/sizeof(a[0]);
+	for(i = 0; i < n; i++) {
+		if(a[i] > a[i+1]) {
+			return false;
+		}
+	}
+	return true;
 }
 
 int main() {
@@ -22,13 +57,16 @@ int main() {
 	printf("Enter the size of the array: ");
 	scanf("%d", &n);
 	int a[n];
-	printf("Enter the array elements in sorted order: ");
+	printf("Enter the array elements: ");
 	for(i = 0; i < n; i++) {
 		scanf("%d", &a[i]);
-	}
-	printf("Enter the value you want to search: ");
-	scanf("%d", &value);
-	int idx = binarySearch(a, value);
-	printf("%d", idx);
-	
+	}	
+    
+    if(isSorted(a)) {
+    	printf("Enter the value you want to search: ");
+		scanf("%d", &value);
+    	printf("Value found at index: %d", binarySearch(a, value));
+	} else {
+		printf("Array is not sorted. Binary search not possible");
+	}	
 }
