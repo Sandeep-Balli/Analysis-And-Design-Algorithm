@@ -7,6 +7,7 @@ int main() {
 	printf("Enter the size of the array: ");
 	scanf("%d", &n);
 	int a[n];
+	printf("Enter the array elements: ");
 	for(i = 0; i < n; i++) {
 		scanf("%d", &a[i]);
 	}
@@ -19,6 +20,7 @@ int main() {
 			}
 		}
 	}
+	printf("The Sorted Array is: ");
 	for(i = 0; i < n; i++) {
 		printf("%d ", a[i]);
 	}
