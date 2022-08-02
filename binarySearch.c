@@ -1,45 +1,23 @@
 #include<stdio.h>
 #include <stdbool.h>
 
-//				ERROR IN CODE
-
-//int binarySearch(int a[], int value) {
-//	int n = sizeof(a)/sizeof(a[0]);
-//	int low = 0;
-//	int high = n-1;
-//	while(low <= high) {
-//		int mid = (low + high) / 2;
-//		if(a[mid] == value) {
-//			return mid;
-//		}
-//		else if(a[mid] > value) {
-//			high = mid - 1;
-//		} 
-//		else if(a[mid] < value) {
-//			low = mid+1;
-//		}
-//	}
-//	return -1;
-//}
 
 int binarySearch(int a[], int value) {
 	int n = sizeof(a)/sizeof(a[0]);
 	int low = 0;
 	int high = n;
-	int mid = -1;
 	while(low <= high) {
 		int mid = (low + high) / 2;
-		if(a[mid] == value) {
-			return mid;
-		}
-		else if(a[mid] > value) {
+		if(a[mid] > value) {
 			high = mid - 1;
 		}
 		else if(a[mid] < value) {
 			low = mid + 1;
+		}else {
+			return mid;
 		}
 	}
-	return mid;
+	return -1;
 }
 
 bool isSorted(int a[]) {

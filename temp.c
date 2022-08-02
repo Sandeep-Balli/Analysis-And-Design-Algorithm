@@ -28,7 +28,7 @@ bool isSorted(int a[]) {
 
 
 int main() {
-	int n, i, value;
+	int n, i, value, no;
 	printf("Enter the size of the array: ");
 	scanf("%d", &n);
 	int a[n];
@@ -36,18 +36,23 @@ int main() {
 	for(i = 0; i < n; i++) {
 		scanf("%d", &a[i]);
 	}
-	if(isSorted(a)) {
-		printf("Enter the value you want to search: ");
-		scanf("%d", &value);
-		if(binarySearch(a, value, 0, n - 1) != -1) {
-			printf("Element found at index: %d", binarySearch(a, value, 0, n-1));
-		}
-		else 
-		{
-			printf("Element not found");
-		}
+	printf("Enter the no. of times you want run the program: ");
+	scanf("%d", &no);
+	for(i = 0; i < no; i++) {
+		if(isSorted(a)) {
+			printf("Enter the value you want to search: ");
+			scanf("%d", &value);
+			if(binarySearch(a, value, 0, n - 1) != -1) {
+				printf("Element found at index: %d\n", binarySearch(a, value, 0, n-1));
+			}
+			else 
+			{
+				printf("Element not found\n");
+			}
 		
-	} else {
-		printf("Array is not sorted. Binary Search not possible");
+		} else {
+			printf("Array is not sorted. Binary Search not possible");
+		}
 	}
+	
 }
